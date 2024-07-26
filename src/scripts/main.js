@@ -84,8 +84,8 @@ const createDialogTemplate = ({ name, imageUrl, place, category }) => {
               </button>
             </header>
             <div class="detail-recipe-body">
-              <div class="detail-recipe-img-container">
-                <img class="detail-recipe-img" src="${imageUrl}" alt="${name}" />
+              <div class="detail-recipe-img-container skeleton">
+                <img class="detail-recipe-img skeleton" src="${imageUrl}" alt="${name}" />
               </div>
               <div class="detail-recipe-text-container">
                 <p class="detail-recipe-title-text">
