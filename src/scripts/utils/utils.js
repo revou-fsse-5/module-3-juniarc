@@ -7,6 +7,7 @@ const combineIngridientAndMeasure = (data = []) => {
 			const ingridientKey = `strIngredient${i}`;
 			const measureKey = `strMeasure${i}`;
 
+			// Search property of object that contains key value
 			const ingridientValue = object[ingridientKey] || '';
 			const measureValue = object[measureKey] || '';
 
@@ -22,9 +23,10 @@ const combineIngridientAndMeasure = (data = []) => {
 const splitInstructionsToList = (data = []) => {
 	const [{ strInstructions }] = data;
 
+	// split instructions by dots and white space
 	const steps = strInstructions.split(/(?<=\.)\s+/);
 
 	return steps;
 };
 
-export { combineIngridientAndMeasure, splitInstructionsToList }
+export { combineIngridientAndMeasure, splitInstructionsToList };

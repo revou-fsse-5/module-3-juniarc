@@ -1,4 +1,3 @@
-import api from './network/api.js';
 import createDialogTemplate from './templates/dialogTemplates.js';
 import {
 	combineIngridientAndMeasure,
@@ -20,7 +19,8 @@ function renderRecipe(data) {
 
 	const ingridientsAndMeasures = combineIngridientAndMeasure(data);
 	const instructions = splitInstructionsToList(data);
-	const { name, category, place, imageUrl } = recipeServices.getRecipeContent(data);
+	const { name, category, place, imageUrl } =
+		recipeServices.getRecipeContent(data);
 
 	createDialogTemplate({
 		name: name,
@@ -36,12 +36,14 @@ function renderRecipe(data) {
 		document.querySelector('.ingridients-list');
 	const instructionsContainer = document.querySelector('.instructions-list');
 
+	// create ingridients + measures list
 	ingridientsAndMeasures.map((item) => {
 		const listItem = document.createElement('li');
 		listItem.textContent = item;
 		ingridientAndMeasureContainer.appendChild(listItem);
 	});
 
+	// create instructions list
 	instructions.map((instruction) => {
 		const listInstruction = document.createElement('li');
 		listInstruction.textContent = instruction;
