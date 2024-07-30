@@ -52,6 +52,9 @@ function renderRecipe(data) {
 const getRecipeBtn = document.querySelector('#getRecipeBtn');
 
 getRecipeBtn.onclick = async () => {
-	const recipe = await recipeServices.getRandomRecipe(showLoading);
+	showLoading(true);
+	const recipe = await recipeServices.getRandomRecipe();
+	showLoading(false);
+
 	renderRecipe(recipe);
 };
