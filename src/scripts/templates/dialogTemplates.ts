@@ -1,5 +1,7 @@
-const createDialogTemplate = ({ name, imageUrl, place, category , recipeContainer}) => {
-	const dialog = document.createElement('dialog');
+import { dialogTemplateProps } from "../types/mealsTypes";
+
+const createDialogTemplate = ({ name, imageUrl, place, category , recipeContainer} : dialogTemplateProps) : void => {
+	const dialog: HTMLDialogElement = document.createElement('dialog');
 
 	dialog.className = 'detail-recipe-dialog';
 	dialog.innerHTML = `
@@ -46,7 +48,7 @@ const createDialogTemplate = ({ name, imageUrl, place, category , recipeContaine
 	dialog.open = true;
 	recipeContainer.appendChild(dialog);
 
-	const closeBtn = document.querySelector('#detailRecipeCloseBtn');
+	const closeBtn = document.querySelector('#detailRecipeCloseBtn') as HTMLButtonElement;
 	closeBtn.onclick = () => {
 		dialog.remove();
 	};

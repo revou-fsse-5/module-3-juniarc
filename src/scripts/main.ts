@@ -4,9 +4,10 @@ import {
 	splitInstructionsToList,
 } from './utils/utils.js';
 import recipeServices from './services/recipeServices.js';
+import { Meal, recipeContent } from './types/mealsTypes.js';
 
-function showLoading(isShow) {
-	const spinner = document.querySelector('.spinner');
+function showLoading(isShow : boolean) : void {
+	const spinner = document.querySelector('.spinner') as HTMLDivElement;
 	if (isShow) {
 		spinner.classList.toggle('show');
 	} else {
@@ -14,27 +15,25 @@ function showLoading(isShow) {
 	}
 }
 
-function renderRecipe(data) {
-	const recipeContainer = document.querySelector('#recipeContainer');
+function renderRecipe(meals: Meal[]) : void {
+	const recipeContainer = document.querySelector('#recipeContainer') as HTMLDivElement;
 
-	const ingridientsAndMeasures = combineIngridientAndMeasure(data);
-	const instructions = splitInstructionsToList(data);
+	const ingridientsAndMeasures: string[] = combineIngridientAndMeasure(meals);
+	const instructions: string[] = splitInstructionsToList(meals);
 	const { name, category, place, imageUrl } =
-		recipeServices.getRecipeContent(data);
+		recipeServices.getRecipeContent(meals) as recipeContent;
 
 	createDialogTemplate({
 		name: name,
 		imageUrl: imageUrl,
 		place: place,
 		category: category,
-		ingridientsAndMeasures: ingridientsAndMeasures,
-		instructions: instructions,
 		recipeContainer: recipeContainer,
 	});
 
 	const ingridientAndMeasureContainer =
-		document.querySelector('.ingridients-list');
-	const instructionsContainer = document.querySelector('.instructions-list');
+		document.querySelector('.ingridients-list') as HTMLUListElement;
+	const instructionsContainer = document.querySelector('.instructions-list') as HTMLUListElement;
 
 	// create ingridients + measures list
 	ingridientsAndMeasures.map((item) => {
@@ -51,12 +50,14 @@ function renderRecipe(data) {
 	});
 }
 
-const getRecipeBtn = document.querySelector('#getRecipeBtn');
+const getRecipeBtn = document.querySelector('#getRecipeBtn') as HTMLButtonElement;
 
 getRecipeBtn.onclick = async () => {
 	showLoading(true);
 	const recipe = await recipeServices.getRandomRecipe();
 	showLoading(false);
+
+	console.log(recipe)
 
 	renderRecipe(recipe);
 };
