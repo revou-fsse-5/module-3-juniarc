@@ -1,11 +1,11 @@
 /**
  * combineIngridientAndMeasure test scenario
  * combineIngridientAndMeasure function :
- * - should return combinedIngAndMeasure ass arrayOfString when receive meals data
+ * - should return combinedIngAndMeasure as arrayOfString when receive meals data
  */
 
 import { Meal } from "../types/mealsTypes";
-import { combineIngridientAndMeasure } from "./utils";
+import { combineIngridientAndMeasure, splitInstructionsToList } from "./utils";
 
 const fakeMealArray: Meal[] = [
     {
@@ -78,5 +78,26 @@ describe('combineIngridientAndMeasure function', () => {
 
         // assert
         expect(combinedIngAndMeasure).toEqual(fakeCombinedIngAndMeasure);
+    });
+})
+
+/**
+ * splitInstructionsToList test scenario
+ * splitInstructionsToList function :
+ * - should return steps as arrayOfString when receive meals data
+ */
+
+describe('splitInstructionsToList function', () => {
+    it('should return steps as arrayOfString when receive meals data', () => {
+        // arrange
+        const fakeSteps: string[] = [
+            'Fake instructions'
+        ]
+
+        // action
+        const steps: string[] = splitInstructionsToList(fakeMealArray);
+
+        // assert
+        expect(steps).toEqual(fakeSteps);
     });
 })

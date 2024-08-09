@@ -28,6 +28,8 @@ const splitInstructionsToList = (meals: Meal[] = []) : string[] => {
 	// split instructions by dots and white space
 	const steps: string[] = strInstructions.split(/(?<=\.)\s+/);
 
+	console.log(steps);
+
 	return steps;
 };
 

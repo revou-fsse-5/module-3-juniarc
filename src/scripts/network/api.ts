@@ -19,9 +19,13 @@ const api = (() => {
 		    const mealArray: Meal[] = responseJson.meals;
 
 		    return mealArray;
-        } catch (error) {
-            alert(error.message);
-            return [];
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+				alert(error.message);
+			} else {
+				alert('An unknown error occurred');
+			}
+			return [];	
         }
 	}
 
