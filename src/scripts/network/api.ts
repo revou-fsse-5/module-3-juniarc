@@ -20,7 +20,7 @@ const api = (() => {
 
 		    return mealArray;
         } catch (error) {
-            console.log(error.message);
+            alert(error.message);
             return [];
         }
 	}
